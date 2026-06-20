@@ -20,9 +20,9 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
-      <div className="section-shell flex h-20 items-center justify-between">
-        <NavLink to="/" className="flex items-center gap-3 font-display text-lg font-bold tracking-tight">
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-lg">
+      <div className="section-shell flex h-16 items-center justify-between md:h-20">
+        <NavLink to="/" className="flex items-center gap-2 font-display text-base font-bold tracking-tight md:gap-3 md:text-lg">
+          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-lg md:h-11 md:w-11">
             <Zap className="h-5 w-5" />
           </span>
           <span>
@@ -61,7 +61,7 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-t border-slate-200 bg-white lg:hidden"
+            className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-slate-200 bg-white lg:hidden"
           >
             <div className="section-shell grid gap-2 py-4">
               {links.map(([label, to]) => (

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=Parisienne&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -101,8 +101,63 @@ body {
   background: radial-gradient(circle, rgba(70, 243, 255, 0.14), transparent 40%);
   opacity: 0;
   transition: opacity 240ms ease;
+  pointer-events: none;
 }
 
 .tilt-glow:hover::after {
   opacity: 1;
+}
+
+.palette-section {
+  color: #797a7e;
+}
+
+.palette-section .text-brand-blue {
+  color: #797a7e !important;
+}
+
+.palette-section .premium-card {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(121, 122, 126, 0.14);
+}
+
+.palette-section .premium-card-dark {
+  background: #797a7e;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.palette-section .glass-panel {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(121, 122, 126, 0.12);
+}
+
+.palette-mint {
+  background: linear-gradient(180deg, #e0ece4 0%, #f7f2e7 100%);
+}
+
+.palette-cream {
+  background: linear-gradient(180deg, #f7f2e7 0%, #d8d3cd 100%);
+}
+
+.palette-beige {
+  background: linear-gradient(180deg, #d8d3cd 0%, #f7f2e7 100%);
+}
+
+.palette-gray {
+  background: #797a7e;
+}
+
+.editorial-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.script-eyebrow {
+  font-family: 'Parisienne', cursive;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #ff5b3a;
+  text-transform: none;
+  letter-spacing: 0;
 }

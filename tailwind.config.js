@@ -24,6 +24,8 @@ export default {
       fontFamily: {
         sans: ['Manrope', 'ui-sans-serif', 'system-ui'],
         display: ['Sora', 'ui-sans-serif', 'system-ui'],
+        editorial: ['Cormorant Garamond', 'ui-serif', 'Georgia'],
+        script: ['Parisienne', 'cursive'],
       },
       colors: {
         brand: {

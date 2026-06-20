@@ -29,11 +29,11 @@ function fallbackSvg(label) {
 
 export default function SmartImage({ src, alt, fallbackLabel, className = '', imgClassName = '', style }) {
   return (
-    <div className={className} style={style}>
+    <div className={`overflow-hidden ${className}`.trim()} style={style}>
       <img
         src={src}
         alt={alt}
-        className={imgClassName}
+        className={`transition-transform duration-700 ease-out will-change-transform hover:scale-105 ${imgClassName}`.trim()}
         onError={(e) => {
           e.currentTarget.src = fallbackSvg(fallbackLabel || alt || 'Kriscel EV');
         }}

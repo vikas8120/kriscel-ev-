@@ -19,7 +19,7 @@ export default function Charging() {
               src="/assets/kriscel-charging-scooter.png"
               alt="Kriscel Charging Scooter"
               fallbackLabel="Kriscel Charging Scooter"
-              imgClassName="h-[420px] w-full rounded-[1.5rem] object-cover"
+              imgClassName="h-[320px] w-full rounded-[1.5rem] object-contain p-3 sm:h-[380px] md:h-[420px] md:object-cover md:p-0"
             />
           </div>
           <ChargingCalculator vehicles={vehicles} />

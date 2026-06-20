@@ -44,7 +44,7 @@ export default function VehicleCard({ vehicle, onDetails, onWishlist, wished = f
             onError={(e) => {
               e.currentTarget.src = buildFallbackSvg(vehicle.name, vehicle.type);
             }}
-            className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+            className="h-full w-full object-contain p-4 transition-transform duration-700 ease-out will-change-transform group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
           <div className="absolute left-4 top-4 rounded-full border border-sky-200 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur">

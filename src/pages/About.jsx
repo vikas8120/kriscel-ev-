@@ -24,7 +24,7 @@ export default function About() {
               src="/assets/kriscel-about-tech.png"
               alt="Brand story"
               fallbackLabel="Kriscel Tech"
-              imgClassName="h-full min-h-[420px] w-full rounded-[1.5rem] object-cover"
+              imgClassName="h-[320px] w-full rounded-[1.5rem] object-contain p-3 sm:h-[380px] md:h-full md:min-h-[420px] md:object-cover md:p-0"
             />
           </div>
           <div className="space-y-6">

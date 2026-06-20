@@ -27,7 +27,7 @@ export default function VehicleModal({ vehicle, open, onClose, onWishlist, wishe
                     src={vehicle.image}
                     alt={vehicle.name}
                     fallbackLabel={vehicle.name}
-                    imgClassName="h-full w-full object-contain"
+                    imgClassName="h-full w-full object-contain p-2 sm:p-0"
                   />
                 </div>
               </div>

@@ -29,7 +29,21 @@ export default function CompareTable({ left, right, title = 'Comparison' }) {
   return (
     <div className="premium-card overflow-hidden">
       <div className="border-b border-slate-200 px-6 py-4 font-semibold">{title}</div>
-      <div className="grid gap-3 p-4">
+      <div className="grid gap-3 p-4 md:hidden">
+        <div className="rounded-2xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white">
+          {left.name} vs {right.name}
+        </div>
+        {rows.map(([spec, a, b, winner]) => (
+          <div key={spec} className="rounded-2xl bg-slate-50 p-4">
+            <div className="mb-3 text-sm font-semibold text-slate-900">{spec}</div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {cell('left', winner, `${left.name}: ${a}`)}
+              {cell('right', winner, `${right.name}: ${b}`)}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="hidden gap-3 p-4 md:grid">
         <div className="grid grid-cols-[1fr_1fr_1fr] gap-3 rounded-2xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white">
           <div>Spec</div>
           <div>{left.name}</div>
