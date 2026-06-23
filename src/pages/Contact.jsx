@@ -30,15 +30,15 @@ export default function Contact() {
             ].map(([name, label, type]) => (
               <label key={name} className="block space-y-2">
                 <span className="text-sm font-semibold">{label}</span>
-                <input type={type} required className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-brand-blue" />
+                <input type={type} required className="w-full rounded-2xl border border-[#d8d3cd] bg-[#fbf7f0] px-4 py-3 outline-none focus:border-brand-blue" />
               </label>
             ))}
             <label className="block space-y-2">
               <span className="text-sm font-semibold">Message</span>
-              <textarea rows="5" required className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-brand-blue" />
+              <textarea rows="5" required className="w-full rounded-2xl border border-[#d8d3cd] bg-[#fbf7f0] px-4 py-3 outline-none focus:border-brand-blue" />
             </label>
-            <button className="magnetic rounded-full bg-slate-950 px-6 py-3 font-semibold text-white">Send Message</button>
-            {status ? <div className="rounded-2xl bg-emerald-50 p-4 text-sm text-emerald-700">{status}</div> : null}
+            <button className="magnetic rounded-full bg-brand-gray px-6 py-3 font-semibold text-white">Send Message</button>
+            {status ? <div className="rounded-2xl bg-brand-sage p-4 text-sm text-slate-700">{status}</div> : null}
           </form>
 
           <div className="space-y-6">
@@ -60,11 +60,11 @@ export default function Contact() {
             </div>
             <FAQAccordion faqs={faqs} />
             <div className="premium-card p-5">
-              <div className="text-sm font-semibold text-slate-900">Social</div>
+              <div className="text-sm font-semibold text-brand-ink">Social</div>
               <div className="mt-3 flex gap-3 text-slate-500">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100"><Instagram className="h-4 w-4" /></span>
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100"><Linkedin className="h-4 w-4" /></span>
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100"><Mail className="h-4 w-4" /></span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-soft"><Instagram className="h-4 w-4" /></span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-soft"><Linkedin className="h-4 w-4" /></span>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-soft"><Mail className="h-4 w-4" /></span>
               </div>
             </div>
           </div>

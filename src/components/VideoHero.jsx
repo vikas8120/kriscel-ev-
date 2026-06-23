@@ -1,18 +1,43 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-export default function VideoHero({ title, subtitle, actions, stats = [] }) {
+const DEFAULT_VIDEO_SOURCES = ['/assets/ev-hero-video.mp4'];
+const VIDEO_STORAGE_KEY = 'kriscel-hero-video-index';
+
+function getInitialVideo(videoSources) {
+  if (typeof window === 'undefined' || !videoSources.length) {
+    return videoSources[0] || DEFAULT_VIDEO_SOURCES[0];
+  }
+
+  const storedIndex = Number(window.localStorage.getItem(VIDEO_STORAGE_KEY) || 0);
+  const currentIndex = Number.isFinite(storedIndex) ? storedIndex % videoSources.length : 0;
+  return videoSources[currentIndex] || videoSources[0] || DEFAULT_VIDEO_SOURCES[0];
+}
+
+export default function VideoHero({ title, subtitle, actions, stats = [], videoSources = DEFAULT_VIDEO_SOURCES }) {
+  const [activeVideo, setActiveVideo] = useState(() => getInitialVideo(videoSources));
   const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
+    if (!videoSources.length || typeof window === 'undefined') return;
+    if (window.__kriscelHeroVideoAdvancedThisLoad) return;
+
+    const storedIndex = Number(window.localStorage.getItem(VIDEO_STORAGE_KEY) || 0);
+    const currentIndex = Number.isFinite(storedIndex) ? storedIndex % videoSources.length : 0;
+    const nextIndex = (currentIndex + 1) % videoSources.length;
+
+    setActiveVideo(videoSources[currentIndex] || videoSources[0] || DEFAULT_VIDEO_SOURCES[0]);
     setVideoFailed(false);
-  }, []);
+    window.localStorage.setItem(VIDEO_STORAGE_KEY, String(nextIndex));
+    window.__kriscelHeroVideoAdvancedThisLoad = true;
+  }, [videoSources]);
 
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
         {!videoFailed ? (
           <video
+            key={activeVideo}
             className="h-full w-full object-cover opacity-100"
             autoPlay
             muted
@@ -21,7 +46,7 @@ export default function VideoHero({ title, subtitle, actions, stats = [] }) {
             poster="/assets/ev-scooty-hero.jpg"
             onError={() => setVideoFailed(true)}
           >
-            <source src="/assets/ev-hero-video.mp4" type="video/mp4" />
+            <source src={activeVideo} type="video/mp4" />
           </video>
         ) : null}
       </div>

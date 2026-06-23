@@ -6,7 +6,7 @@ export default function VehicleModal({ vehicle, open, onClose, onWishlist, wishe
   return (
     <AnimatePresence>
       {open && vehicle ? (
-        <motion.div className="fixed inset-0 z-[70] flex items-end justify-center bg-slate-950/45 p-4 backdrop-blur-sm md:items-center">
+        <motion.div className="fixed inset-0 z-[70] flex items-end justify-center bg-brand-ink/45 p-4 backdrop-blur-sm md:items-center">
           <motion.div
             initial={{ y: 40, opacity: 0, scale: 0.98 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
@@ -14,15 +14,15 @@ export default function VehicleModal({ vehicle, open, onClose, onWishlist, wishe
             className="premium-card w-full max-w-4xl overflow-hidden"
           >
             <div className="grid gap-0 md:grid-cols-[1.1fr_0.9fr]">
-              <div className="relative bg-gradient-to-br from-white to-sky-50 p-6 md:p-8">
+              <div className="relative bg-gradient-to-br from-brand-soft to-brand-sage p-6 md:p-8">
                 <button
                   onClick={onClose}
-                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow"
+                  className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#fbf7f0] shadow"
                   aria-label="Close"
                 >
                   <X className="h-5 w-5" />
                 </button>
-                <div className="aspect-[4/3] rounded-[2rem] bg-white p-4 shadow-inner">
+                <div className="aspect-[4/3] rounded-[2rem] bg-[#fbf7f0] p-4 shadow-inner">
                   <SmartImage
                     src={vehicle.image}
                     alt={vehicle.name}
@@ -45,7 +45,7 @@ export default function VehicleModal({ vehicle, open, onClose, onWishlist, wishe
                     ['Battery', vehicle.battery],
                     ['Charge', `${vehicle.chargingTime} min`],
                   ].map(([k, v]) => (
-                    <div key={k} className="rounded-2xl bg-slate-50 p-4">
+                    <div key={k} className="rounded-2xl bg-brand-soft p-4">
                       <div className="text-[10px] uppercase tracking-[0.25em] text-slate-500">{k}</div>
                       <div className="mt-1 font-semibold">{v}</div>
                     </div>
@@ -68,14 +68,14 @@ export default function VehicleModal({ vehicle, open, onClose, onWishlist, wishe
                   <button
                     onClick={onWishlist}
                     className={`rounded-full px-5 py-3 text-sm font-semibold ${
-                      wished ? 'bg-brand-blue text-white' : 'bg-slate-100 text-slate-900'
+                      wished ? 'bg-brand-blue text-white' : 'bg-brand-soft text-slate-900'
                     }`}
                   >
                     {wished ? 'Added to Wishlist' : 'Add to Wishlist'}
                   </button>
                   <button
                     onClick={onClose}
-                    className="rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white"
+                    className="rounded-full bg-brand-gray px-5 py-3 text-sm font-semibold text-white"
                   >
                     Close
                   </button>

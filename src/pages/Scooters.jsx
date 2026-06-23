@@ -28,13 +28,13 @@ export default function Scooters() {
 
   return (
     <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <section className="section-shell section-gap">
+      <section className="section-shell pt-8 pb-16 md:pt-10 md:pb-24">
         <SectionHeading
           eyebrow="EV scooters"
           title="Premium scooties with urban elegance."
           subtitle="Filter the lineup by range, speed, and price, then open a refined modal for deeper details."
         />
-        <div className="mt-10 grid gap-4 rounded-[2rem] border border-slate-200 bg-white p-5 md:grid-cols-3">
+        <div className="mt-6 grid gap-4 rounded-[2rem] border border-[#d8d3cd] bg-[#fbf7f0] p-5 md:grid-cols-3">
           <label className="space-y-2">
             <span className="text-sm font-semibold text-slate-700">Max Range: {range} KM</span>
             <input type="range" min="120" max="260" value={range} onChange={(e) => setRange(Number(e.target.value))} className="w-full" />
@@ -44,12 +44,12 @@ export default function Scooters() {
             <input type="range" min="60" max="120" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full" />
           </label>
           <label className="space-y-2">
-            <span className="text-sm font-semibold text-slate-700">Max Price: ₹{price.toLocaleString('en-IN')}</span>
+            <span className="text-sm font-semibold text-slate-700">Max Price: Rs. {price.toLocaleString('en-IN')}</span>
             <input type="range" min="100000" max="250000" value={price} onChange={(e) => setPrice(Number(e.target.value))} className="w-full" />
           </label>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {filtered.map((vehicle) => (
             <VehicleCard
               key={vehicle.id}

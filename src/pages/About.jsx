@@ -18,18 +18,18 @@ export default function About() {
           title="Business automation and digital growth, presented with clarity."
           subtitle="Kriscel Tech helps businesses build web presence, streamline operations, improve marketing performance, and scale with automation-driven systems."
         />
-        <div className="mt-10 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="premium-card overflow-hidden p-4">
+        <div className="mt-10 grid items-start gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="premium-card self-start overflow-hidden p-3">
             <SmartImage
-              src="/assets/kriscel-about-tech.png"
+              src="/assets/about-hero-screenshot.png"
               alt="Brand story"
               fallbackLabel="Kriscel Tech"
-              imgClassName="h-[320px] w-full rounded-[1.5rem] object-contain p-3 sm:h-[380px] md:h-full md:min-h-[420px] md:object-cover md:p-0"
+              imgClassName="h-[300px] w-full rounded-[1.5rem] object-contain bg-[#f9f6ef] p-3 sm:h-[360px] md:h-[420px] md:object-cover md:p-0"
             />
           </div>
           <div className="space-y-6">
             <div className="premium-card p-6">
-              <h3 className="font-display text-2xl font-bold">Mission</h3>
+              <h3 className="font-display text-2xl font-bold text-brand-ink">Mission</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600">
                 To help businesses automate repetitive work, strengthen their digital presence, and
                 unlock growth with practical, modern technology solutions.
@@ -39,7 +39,7 @@ export default function About() {
               {stats.map(([label, value]) => (
                 <div key={label} className="premium-card p-5">
                   <div className="text-xs font-bold uppercase tracking-[0.25em] text-slate-500">{label}</div>
-                  <div className="mt-2 text-2xl font-bold text-slate-950">{value}</div>
+                  <div className="mt-2 text-2xl font-bold text-brand-ink">{value}</div>
                 </div>
               ))}
             </div>
@@ -53,7 +53,7 @@ export default function About() {
                   'Website development and design',
                 ].map((item, index) => (
                   <div key={item} className="flex gap-4">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-blue text-sm font-bold text-white">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-gray text-sm font-bold text-white">
                       {index + 1}
                     </div>
                     <div>

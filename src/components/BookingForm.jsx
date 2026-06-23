@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 
@@ -15,17 +15,6 @@ export default function BookingForm({ vehicles = [], onSubmitBooking }) {
   const [form, setForm] = useState(initial);
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
-
-  const vehicleOptions = useMemo(
-    () =>
-      vehicles.length
-        ? vehicles
-          : [
-            { name: 'Kriscel S1', type: 'Scooty' },
-            { name: 'Kriscel X', type: 'Bike' },
-          ],
-    [vehicles],
-  );
 
   const validate = () => {
     const next = {};
@@ -68,7 +57,7 @@ export default function BookingForm({ vehicles = [], onSubmitBooking }) {
               type={type}
               value={form[field]}
               onChange={(e) => setForm((f) => ({ ...f, [field]: e.target.value }))}
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none ring-0 transition focus:border-brand-blue"
+              className="w-full rounded-2xl border border-[#d8d3cd] bg-[#fbf7f0] px-4 py-3 outline-none ring-0 transition focus:border-brand-blue"
             />
             {errors[field] ? <p className="text-xs font-medium text-red-500">{errors[field]}</p> : null}
           </label>
@@ -79,7 +68,7 @@ export default function BookingForm({ vehicles = [], onSubmitBooking }) {
           <select
             value={form.vehicleType}
             onChange={(e) => setForm((f) => ({ ...f, vehicleType: e.target.value }))}
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-brand-blue"
+            className="w-full rounded-2xl border border-[#d8d3cd] bg-[#fbf7f0] px-4 py-3 outline-none focus:border-brand-blue"
           >
             <option>Scooty</option>
             <option>Bike</option>
@@ -92,7 +81,7 @@ export default function BookingForm({ vehicles = [], onSubmitBooking }) {
             type="date"
             value={form.preferredDate}
             onChange={(e) => setForm((f) => ({ ...f, preferredDate: e.target.value }))}
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-brand-blue"
+            className="w-full rounded-2xl border border-[#d8d3cd] bg-[#fbf7f0] px-4 py-3 outline-none focus:border-brand-blue"
           />
           {errors.preferredDate ? <p className="text-xs font-medium text-red-500">{errors.preferredDate}</p> : null}
         </label>
@@ -100,7 +89,7 @@ export default function BookingForm({ vehicles = [], onSubmitBooking }) {
         <div className="md:col-span-2">
           <button
             type="submit"
-            className="magnetic inline-flex items-center gap-2 rounded-full bg-slate-950 px-6 py-3 font-semibold text-white"
+            className="magnetic inline-flex items-center gap-2 rounded-full bg-brand-gray px-6 py-3 font-semibold text-white"
           >
             Book Test Ride
           </button>
@@ -111,9 +100,9 @@ export default function BookingForm({ vehicles = [], onSubmitBooking }) {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-6 flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-700"
+          className="mt-6 flex items-center gap-3 rounded-2xl border border-brand-sage bg-brand-sage p-4 text-slate-700"
         >
-          <CheckCircle2 className="h-5 w-5" />
+          <CheckCircle2 className="h-5 w-5 text-brand-blue" />
           Your test ride request has been saved successfully.
         </motion.div>
       ) : null}

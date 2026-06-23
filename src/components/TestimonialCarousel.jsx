@@ -23,13 +23,13 @@ export default function TestimonialCarousel({ testimonials = [] }) {
         <div className="flex gap-2">
           <button
             onClick={() => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length)}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-soft"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
           <button
             onClick={() => setIndex((i) => (i + 1) % testimonials.length)}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-soft"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
@@ -44,7 +44,7 @@ export default function TestimonialCarousel({ testimonials = [] }) {
           className="space-y-4"
         >
           <Quote className="h-8 w-8 text-brand-blue" />
-          <p className="max-w-3xl text-xl leading-9 text-slate-900 md:text-2xl">“{current.quote}”</p>
+          <p className="max-w-3xl text-xl leading-9 text-brand-ink md:text-2xl">"{current.quote}"</p>
           <div>
             <div className="font-semibold">{current.name}</div>
             <div className="text-sm text-slate-500">{current.role}</div>

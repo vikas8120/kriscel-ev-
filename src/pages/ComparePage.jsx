@@ -6,7 +6,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 import { vehicles } from '../data/vehicles';
 
 export default function ComparePage() {
-  const [selectedIds, setSelectedIds] = useLocalStorage('voltedge-compare', [vehicles[0].id, vehicles[2].id]);
+  const [selectedIds, setSelectedIds] = useLocalStorage('voltedge-compare', ['s1', 'x']);
   const [leftId, setLeftId] = useState(selectedIds[0]);
   const [rightId, setRightId] = useState(selectedIds[1]);
 
@@ -28,7 +28,7 @@ export default function ComparePage() {
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           <label className="premium-card p-5">
             <div className="mb-2 text-sm font-semibold">Left Vehicle</div>
-            <select value={leftId} onChange={(e) => setLeftId(e.target.value)} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3">
+            <select value={leftId} onChange={(e) => setLeftId(e.target.value)} className="w-full rounded-2xl border border-[#d8d3cd] bg-[#fbf7f0] px-4 py-3">
               {vehicles.map((v) => (
                 <option key={v.id} value={v.id}>
                   {v.name}
@@ -38,7 +38,7 @@ export default function ComparePage() {
           </label>
           <label className="premium-card p-5">
             <div className="mb-2 text-sm font-semibold">Right Vehicle</div>
-            <select value={rightId} onChange={(e) => setRightId(e.target.value)} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3">
+            <select value={rightId} onChange={(e) => setRightId(e.target.value)} className="w-full rounded-2xl border border-[#d8d3cd] bg-[#fbf7f0] px-4 py-3">
               {vehicles.map((v) => (
                 <option key={v.id} value={v.id}>
                   {v.name}

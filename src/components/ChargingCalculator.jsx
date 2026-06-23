@@ -26,7 +26,7 @@ export default function ChargingCalculator({ vehicles }) {
             <select
               value={selected}
               onChange={(e) => setSelected(e.target.value)}
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-brand-blue"
+              className="w-full rounded-2xl border border-[#d8d3cd] bg-[#fbf7f0] px-4 py-3 outline-none focus:border-brand-blue"
             >
               {vehicles.map((v) => (
                 <option key={v.id} value={v.id}>
@@ -40,20 +40,20 @@ export default function ChargingCalculator({ vehicles }) {
             <input type="range" min="0" max="100" value={battery} onChange={(e) => setBattery(Number(e.target.value))} className="w-full" />
           </label>
           <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-2xl bg-slate-50 p-4">
+            <div className="rounded-2xl bg-brand-soft p-4">
               <div className="text-[10px] uppercase tracking-[0.25em] text-slate-500">Estimated time</div>
-              <div className="mt-1 text-2xl font-bold text-slate-950">{estimate} min</div>
+              <div className="mt-1 text-2xl font-bold text-brand-ink">{estimate} min</div>
             </div>
-            <div className="rounded-2xl bg-slate-50 p-4">
+            <div className="rounded-2xl bg-brand-soft p-4">
               <div className="text-[10px] uppercase tracking-[0.25em] text-slate-500">Full pack</div>
-              <div className="mt-1 text-sm font-semibold text-slate-950">{currentVehicle?.battery}</div>
+              <div className="mt-1 text-sm font-semibold text-brand-ink">{currentVehicle?.battery}</div>
             </div>
           </div>
         </div>
 
         <div className="space-y-4">
-          <div className="rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-950 to-slate-800 p-6 text-white">
-            <div className="text-sm text-slate-300">Charging progress</div>
+          <div className="rounded-[2rem] border border-[#d8d3cd] bg-gradient-to-br from-brand-gray to-brand-ink p-6 text-white">
+            <div className="text-sm text-white/75">Charging progress</div>
             <div className="mt-4 h-4 overflow-hidden rounded-full bg-white/10">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-brand-blue via-brand-cyan to-white transition-all duration-500"
@@ -62,7 +62,7 @@ export default function ChargingCalculator({ vehicles }) {
             </div>
             <div className="mt-4 flex items-end justify-between">
               <div>
-                <div className="text-[10px] uppercase tracking-[0.25em] text-slate-400">Ready soon</div>
+                <div className="text-[10px] uppercase tracking-[0.25em] text-white/55">Ready soon</div>
                 <div className="text-3xl font-bold">{100 - battery}% remaining</div>
               </div>
               <div className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm">

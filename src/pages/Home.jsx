@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,10 +8,8 @@ import SectionHeading from '../components/SectionHeading';
 import VideoHero from '../components/VideoHero';
 import FeatureCard from '../components/FeatureCard';
 import BookingForm from '../components/BookingForm';
-import CompareTable from '../components/CompareTable';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 import SmartImage from '../components/SmartImage';
-import KriscelMark from '../components/KriscelMark';
 import { featureHighlights, testimonials, vehicles } from '../data/vehicles';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
@@ -24,12 +22,17 @@ const statCards = [
   { label: 'Impact', value: 'Zero Emission' },
 ];
 
+const heroVideoSources = [
+  '/assets/ev-hero-video.mp4',
+  '/assets/electric-motorcycle-manufactured-video.mp4',
+];
+
 function SectionAction({ to, label, tone = 'dark' }) {
   return (
     <Link
       to={to}
       className={`magnetic inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold ${
-        tone === 'dark' ? 'bg-slate-950 text-white' : 'bg-white text-slate-950 ring-1 ring-slate-200'
+        tone === 'dark' ? 'bg-brand-gray text-white' : 'bg-[#fbf7f0] text-brand-ink ring-1 ring-[#d8d3cd]'
       }`}
     >
       {label}
@@ -42,38 +45,38 @@ function ShowcaseCard({ vehicle }) {
   return (
     <article
       data-showcase-card
-      className="mx-auto w-full max-w-[420px] shrink-0 rounded-[2rem] border border-white/10 bg-white/10 p-5 backdrop-blur-xl lg:mx-0 lg:w-[420px]"
+      className="mx-auto w-full max-w-[420px] shrink-0 rounded-[2rem] border border-white/15 bg-[#fbf7f0]/15 p-5 backdrop-blur-xl lg:mx-0 lg:w-[420px]"
     >
-      <div className="relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-slate-100 to-sky-50">
+      <div className="relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-brand-soft to-brand-sage">
         <SmartImage
           src={vehicle.heroImage || vehicle.image}
           alt={vehicle.name}
           fallbackLabel={vehicle.name}
           imgClassName="h-[260px] w-full object-contain p-4 transition-transform duration-700 ease-out hover:scale-110"
         />
-        <div className="absolute left-4 top-4 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold text-slate-900">
+        <div className="absolute left-4 top-4 rounded-full bg-[#fbf7f0]/85 px-3 py-1 text-xs font-semibold text-brand-ink">
           {vehicle.type}
         </div>
       </div>
       <div className="mt-5 space-y-4">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="font-display text-2xl font-semibold text-slate-950">{vehicle.name}</h3>
+            <h3 className="font-display text-2xl font-semibold text-brand-ink">{vehicle.name}</h3>
             <p className="mt-1 text-sm leading-6 text-slate-700">{vehicle.description}</p>
           </div>
-          <div className="rounded-2xl bg-white px-3 py-2 text-right text-slate-950">
+          <div className="rounded-2xl bg-[#fbf7f0] px-3 py-2 text-right text-brand-ink">
             <div className="text-[10px] uppercase tracking-[0.25em] text-slate-500">Price</div>
             <div className="text-lg font-semibold">Rs. {vehicle.price.toLocaleString('en-IN')}</div>
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-2 text-sm text-slate-950">
+        <div className="grid grid-cols-3 gap-2 text-sm text-brand-ink">
           {[
             ['Range', `${vehicle.range} KM`],
             ['Speed', `${vehicle.speed} km/h`],
             ['Charge', `${vehicle.chargingTime} min`],
           ].map(([k, v]) => (
-            <div key={k} className="rounded-2xl bg-white/90 p-3">
+            <div key={k} className="rounded-2xl bg-[#fbf7f0]/90 p-3">
               <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500">{k}</div>
               <div className="mt-1 font-semibold">{v}</div>
             </div>
@@ -82,7 +85,7 @@ function ShowcaseCard({ vehicle }) {
 
         <Link
           to={vehicle.type === 'Scooty' ? '/scooters' : '/bikes'}
-          className="inline-flex items-center gap-2 rounded-full bg-brand-cyan px-5 py-3 text-sm font-semibold text-slate-950"
+          className="inline-flex items-center gap-2 rounded-full bg-brand-cyan px-5 py-3 text-sm font-semibold text-brand-ink"
         >
           View Details
           <ArrowRight className="h-4 w-4" />
@@ -193,9 +196,6 @@ function Home() {
   const [bookings, setBookings] = useLocalStorage('voltedge-bookings', []);
   const [wishlist] = useLocalStorage('voltedge-wishlist', []);
 
-  const compareLeft = vehicles[0];
-  const compareRight = vehicles[3];
-
   return (
     <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="overflow-hidden">
       <VideoHero
@@ -217,24 +217,35 @@ function Home() {
           </button>,
         ]}
         stats={statCards}
+        videoSources={heroVideoSources}
       />
 
       <HorizontalShowcase />
 
-      <section className="palette-section palette-mint">
-        <div className="section-shell section-gap">
+      <section className="palette-section palette-mint relative overflow-hidden">
+        <div className="section-shell py-10 relative z-10 md:py-14">
           <SectionHeading
             eyebrow="Premium features"
             title="Smart engineering, crafted like jewelry."
             subtitle="Every touchpoint feels upscale, from battery intelligence to the security and app ecosystem."
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {featureHighlights.map((title, index) => (
               <FeatureCard
                 key={title}
                 title={title}
                 description="A luxury-grade feature built for confidence, convenience, and smooth daily riding."
-                icon={<KriscelMark />}
+                icon={
+                  <span className="flex h-5 w-5 items-center justify-center rounded-md bg-gradient-to-br from-brand-blue to-brand-cyan text-white">
+                    <Zap className="h-3 w-3" />
+                  </span>
+                }
+                compact
+                className="border-white/6 backdrop-blur-0"
+                style={{
+                  backgroundColor: 'transparent',
+                  boxShadow: 'none',
+                }}
               />
             ))}
           </div>
@@ -266,7 +277,7 @@ function Home() {
             <div className="grid gap-4 sm:grid-cols-2">
               {['Lithium battery', 'Smart BMS', 'Thermal protection', 'Fast charging'].map((item) => (
                 <div key={item} className="premium-card p-5">
-                  <div className="text-sm font-semibold text-slate-950">{item}</div>
+                  <div className="text-sm font-semibold text-brand-ink">{item}</div>
                   <p className="mt-2 text-sm leading-7 text-slate-600">Built to stay efficient, protected, and reliable over long usage cycles.</p>
                 </div>
               ))}
@@ -325,22 +336,6 @@ function Home() {
         </div>
       </section>
 
-      <section className="palette-section palette-mint">
-        <div className="section-shell section-gap">
-          <SectionHeading
-            eyebrow="Compare models"
-            title="A quick side-by-side preview."
-            subtitle="See the premium specs of the flagship scooters and bikes before opening the full compare page."
-          />
-          <div className="mt-10">
-            <CompareTable left={compareLeft} right={compareRight} title="Kriscel recommendation" />
-          </div>
-          <div className="mt-6 flex justify-end">
-            <SectionAction to="/compare" label="Full Compare" />
-          </div>
-        </div>
-      </section>
-
       <section className="palette-section palette-cream">
         <div className="section-shell section-gap grid gap-8 lg:grid-cols-2">
           <div className="premium-card overflow-hidden p-4">
@@ -363,7 +358,7 @@ function Home() {
                 <span>Fast charge</span>
                 <span>Ride again</span>
               </div>
-              <div className="h-3 overflow-hidden rounded-full bg-slate-100">
+              <div className="h-3 overflow-hidden rounded-full bg-brand-soft">
                 <motion.div
                   className="h-full rounded-full bg-gradient-to-r from-brand-blue via-brand-cyan to-slate-900"
                   initial={{ width: '15%' }}
@@ -413,11 +408,11 @@ function Home() {
 
       <section className="palette-section palette-gray">
         <div className="section-shell section-gap">
-          <div className="premium-card overflow-hidden bg-[#797a7e] p-8 text-slate-950 md:p-12">
+          <div className="premium-card-dark overflow-hidden p-8 text-[#fbf7f0] md:p-12">
             <div className="max-w-3xl space-y-5">
-              <div className="text-xs font-bold uppercase tracking-[0.35em] text-slate-700">Final CTA</div>
-              <h2 className="editorial-title text-3xl text-slate-950 md:text-5xl">Your electric journey starts here.</h2>
-              <p className="max-w-3xl text-slate-600">
+              <div className="text-xs font-bold uppercase tracking-[0.35em] text-white/65">Final CTA</div>
+              <h2 className="editorial-title text-3xl text-[#fbf7f0] md:text-5xl">Your electric journey starts here.</h2>
+              <p className="max-w-3xl text-white/75">
                 Book a ride, compare the lineup, and explore premium EV mobility that feels forward-looking and polished.
               </p>
               <div className="flex flex-wrap gap-3">

@@ -13,13 +13,13 @@ export default function CompareTable({ left, right, title = 'Comparison' }) {
     ['Battery', left.battery, right.battery, left.battery.length > right.battery.length ? 'left' : right.battery.length > left.battery.length ? 'right' : 'tie'],
     ['Charging Time', `${left.chargingTime} min`, `${right.chargingTime} min`, left.chargingTime < right.chargingTime ? 'left' : right.chargingTime < left.chargingTime ? 'right' : 'tie'],
     ['Warranty', left.warranty, right.warranty, left.warranty > right.warranty ? 'left' : right.warranty > left.warranty ? 'right' : 'tie'],
-    ['Price', `₹${left.price.toLocaleString('en-IN')}`, `₹${right.price.toLocaleString('en-IN')}`, left.price < right.price ? 'left' : right.price < left.price ? 'right' : 'tie'],
+    ['Price', `Rs. ${left.price.toLocaleString('en-IN')}`, `Rs. ${right.price.toLocaleString('en-IN')}`, left.price < right.price ? 'left' : right.price < left.price ? 'right' : 'tie'],
   ];
 
   const cell = (side, winner, value) => (
     <div
       className={`rounded-2xl px-4 py-3 text-sm ${
-        winner === side ? 'bg-brand-blue/10 text-slate-950 ring-1 ring-brand-blue/20' : 'bg-slate-50 text-slate-700'
+        winner === side ? 'bg-brand-blue/10 text-slate-950 ring-1 ring-brand-blue/20' : 'bg-brand-soft text-slate-700'
       }`}
     >
       {value}
@@ -28,13 +28,13 @@ export default function CompareTable({ left, right, title = 'Comparison' }) {
 
   return (
     <div className="premium-card overflow-hidden">
-      <div className="border-b border-slate-200 px-6 py-4 font-semibold">{title}</div>
+      <div className="border-b border-[#d8d3cd] px-6 py-4 font-semibold">{title}</div>
       <div className="grid gap-3 p-4 md:hidden">
-        <div className="rounded-2xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white">
+        <div className="rounded-2xl bg-brand-gray px-4 py-3 text-sm font-semibold text-white">
           {left.name} vs {right.name}
         </div>
         {rows.map(([spec, a, b, winner]) => (
-          <div key={spec} className="rounded-2xl bg-slate-50 p-4">
+          <div key={spec} className="rounded-2xl bg-brand-soft p-4">
             <div className="mb-3 text-sm font-semibold text-slate-900">{spec}</div>
             <div className="grid gap-3 sm:grid-cols-2">
               {cell('left', winner, `${left.name}: ${a}`)}
@@ -44,14 +44,14 @@ export default function CompareTable({ left, right, title = 'Comparison' }) {
         ))}
       </div>
       <div className="hidden gap-3 p-4 md:grid">
-        <div className="grid grid-cols-[1fr_1fr_1fr] gap-3 rounded-2xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white">
+        <div className="grid grid-cols-[1fr_1fr_1fr] gap-3 rounded-2xl bg-brand-gray px-4 py-3 text-sm font-semibold text-white">
           <div>Spec</div>
           <div>{left.name}</div>
           <div>{right.name}</div>
         </div>
         {rows.map(([spec, a, b, winner]) => (
           <div key={spec} className="grid grid-cols-[1fr_1fr_1fr] gap-3">
-            <div className="rounded-2xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-900">{spec}</div>
+            <div className="rounded-2xl bg-brand-stone px-4 py-3 text-sm font-semibold text-slate-900">{spec}</div>
             {cell('left', winner, a)}
             {cell('right', winner, b)}
           </div>

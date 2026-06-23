@@ -4,7 +4,7 @@ export default function SectionHeading({ eyebrow, title, subtitle, center = fals
       {eyebrow ? (
         <div className="script-eyebrow">{eyebrow}</div>
       ) : null}
-      <h2 className="editorial-title text-3xl tracking-tight text-slate-950 md:text-5xl">
+      <h2 className="editorial-title text-3xl tracking-tight text-brand-ink md:text-5xl">
         {title}
       </h2>
       {subtitle ? <p className="text-base leading-7 text-slate-600 md:text-lg">{subtitle}</p> : null}

@@ -15,28 +15,39 @@ const items = [
 export default function Technology() {
   return (
     <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <section className="section-shell section-gap">
-        <SectionHeading
-          eyebrow="Technology"
-          title="Elegant engineering under the hood."
-          subtitle="An animated premium card grid and structured diagrams for the battery, motor, dashboard, mobile app, safety, and braking stack."
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-35"
+          style={{
+            backgroundImage: "url('/assets/technology-background.png')",
+            backgroundPosition: 'center -60px',
+          }}
+          aria-hidden="true"
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {items.map(([title, description, icon]) => (
-            <FeatureCard key={title} title={title} description={description} icon={icon} />
-          ))}
-        </div>
-        <div className="mt-10 premium-card overflow-hidden p-5">
-          <div className="grid gap-5 lg:grid-cols-3">
-            {['Battery to BMS', 'BMS to Motor Controller', 'Controller to Wheels'].map((item, index) => (
-              <div key={item} className="rounded-[1.5rem] bg-slate-50 p-5">
-                <div className="text-xs font-bold uppercase tracking-[0.3em] text-brand-blue">Step {index + 1}</div>
-                <div className="mt-2 font-semibold">{item}</div>
-                <div className="mt-2 text-sm leading-7 text-slate-600">
-                  Visualized as a clean system block inside a premium technology story.
-                </div>
-              </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f7f2e7]/65 via-[#f7f2e7]/35 to-[#f7f2e7]/75" aria-hidden="true" />
+        <div className="section-shell section-gap relative z-10">
+          <SectionHeading
+            eyebrow="Technology"
+            title="Elegant engineering under the hood."
+            subtitle="An animated premium card grid and structured diagrams for the battery, motor, dashboard, mobile app, safety, and braking stack."
+          />
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {items.map(([title, description, icon]) => (
+              <FeatureCard key={title} title={title} description={description} icon={icon} />
             ))}
+          </div>
+          <div className="mt-10 premium-card overflow-hidden p-5">
+            <div className="grid gap-5 lg:grid-cols-3">
+              {['Battery to BMS', 'BMS to Motor Controller', 'Controller to Wheels'].map((item, index) => (
+                <div key={item} className="rounded-[1.5rem] bg-brand-soft p-5">
+                  <div className="text-xs font-bold uppercase tracking-[0.3em] text-brand-blue">Step {index + 1}</div>
+                  <div className="mt-2 font-semibold">{item}</div>
+                  <div className="mt-2 text-sm leading-7 text-slate-600">
+                    Visualized as a clean system block inside a premium technology story.
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

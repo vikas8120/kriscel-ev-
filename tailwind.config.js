@@ -31,8 +31,11 @@ export default {
         brand: {
           blue: '#1888ff',
           cyan: '#46f3ff',
-          ink: '#0f172a',
-          soft: '#eaf4ff',
+          ink: '#1f2937',
+          soft: '#f7f2e7',
+          sage: '#e0ece4',
+          stone: '#d8d3cd',
+          gray: '#797a7e',
         },
       },
     },

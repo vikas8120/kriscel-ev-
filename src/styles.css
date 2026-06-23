@@ -8,11 +8,12 @@ html {
 }
 
 body {
-  @apply bg-white text-slate-900 font-sans antialiased;
+  @apply bg-[#f7f2e7] text-[#1f2937] font-sans antialiased;
   background:
-    radial-gradient(circle at top left, rgba(70, 243, 255, 0.14), transparent 30%),
-    radial-gradient(circle at top right, rgba(24, 136, 255, 0.1), transparent 24%),
-    linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+    radial-gradient(circle at top left, rgba(224, 236, 228, 0.7), transparent 28%),
+    radial-gradient(circle at top right, rgba(70, 243, 255, 0.12), transparent 24%),
+    radial-gradient(circle at bottom center, rgba(216, 211, 205, 0.45), transparent 32%),
+    linear-gradient(180deg, #f7f2e7 0%, #eef5ef 56%, #d8d3cd 100%);
 }
 
 #root {
@@ -20,15 +21,15 @@ body {
 }
 
 .premium-card {
-  @apply rounded-[1.75rem] border border-white/70 bg-white/75 shadow-luxe backdrop-blur-xl;
+  @apply rounded-[1.75rem] border border-[#d8d3cd]/70 bg-[#fbf7f0]/85 shadow-luxe backdrop-blur-xl;
 }
 
 .premium-card-dark {
-  @apply rounded-[1.75rem] border border-slate-200/70 bg-slate-950/90 shadow-luxe backdrop-blur-xl;
+  @apply rounded-[1.75rem] border border-white/10 bg-[#797a7e] shadow-luxe backdrop-blur-xl;
 }
 
 .glass-panel {
-  @apply rounded-[2rem] border border-white/70 bg-white/45 backdrop-blur-2xl;
+  @apply rounded-[2rem] border border-white/50 bg-white/30 backdrop-blur-2xl;
 }
 
 .section-shell {
@@ -40,7 +41,7 @@ body {
 }
 
 .text-gradient {
-  @apply bg-gradient-to-r from-brand-blue via-slate-900 to-brand-cyan bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-brand-blue via-brand-ink to-brand-cyan bg-clip-text text-transparent;
 }
 
 .magnetic {
@@ -60,14 +61,14 @@ body {
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8)),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.72)),
+    linear-gradient(90deg, rgba(31, 41, 55, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(31, 41, 55, 0.04) 1px, transparent 1px);
   background-size: auto, 48px 48px, 48px 48px;
 }
 
 .soft-ring {
-  box-shadow: 0 0 0 1px rgba(24, 136, 255, 0.12), 0 12px 50px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 0 0 1px rgba(24, 136, 255, 0.12), 0 16px 50px rgba(31, 41, 55, 0.10);
 }
 
 .hide-scrollbar::-webkit-scrollbar {
@@ -98,7 +99,7 @@ body {
   content: '';
   position: absolute;
   inset: -40%;
-  background: radial-gradient(circle, rgba(70, 243, 255, 0.14), transparent 40%);
+  background: radial-gradient(circle, rgba(70, 243, 255, 0.12), transparent 40%);
   opacity: 0;
   transition: opacity 240ms ease;
   pointer-events: none;
@@ -109,16 +110,16 @@ body {
 }
 
 .palette-section {
-  color: #797a7e;
+  color: #4b5563;
 }
 
 .palette-section .text-brand-blue {
-  color: #797a7e !important;
+  color: #4b5563 !important;
 }
 
 .palette-section .premium-card {
-  background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(121, 122, 126, 0.14);
+  background: rgba(251, 247, 240, 0.9);
+  border-color: rgba(216, 211, 205, 0.8);
 }
 
 .palette-section .premium-card-dark {
@@ -128,7 +129,7 @@ body {
 
 .palette-section .glass-panel {
   background: rgba(255, 255, 255, 0.45);
-  border-color: rgba(121, 122, 126, 0.12);
+  border-color: rgba(216, 211, 205, 0.5);
 }
 
 .palette-mint {
@@ -157,7 +158,7 @@ body {
   font-family: 'Parisienne', cursive;
   font-size: 1.8rem;
   line-height: 1;
-  color: #ff5b3a;
+  color: #c65d39;
   text-transform: none;
   letter-spacing: 0;
 }

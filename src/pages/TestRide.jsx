@@ -36,15 +36,15 @@ export default function TestRide() {
                   <div key={booking.id} className="premium-card p-5">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="font-semibold text-slate-950">{booking.name}</div>
+                        <div className="font-semibold text-brand-ink">{booking.name}</div>
                         <div className="text-sm text-slate-600">
-                          {booking.vehicleType} • {booking.city} • {booking.preferredDate}
+                          {booking.vehicleType} - {booking.city} - {booking.preferredDate}
                         </div>
-                        <div className="mt-2 text-sm text-slate-500">{booking.phone} • {booking.email}</div>
+                        <div className="mt-2 text-sm text-slate-500">{booking.phone} - {booking.email}</div>
                       </div>
                       <button
                         onClick={() => setBookings(bookings.filter((item) => item.id !== booking.id))}
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-700"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-soft text-slate-700"
                         aria-label="Delete booking"
                       >
                         <Trash2 className="h-4 w-4" />
