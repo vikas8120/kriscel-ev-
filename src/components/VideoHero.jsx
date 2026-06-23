@@ -1,36 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const DEFAULT_VIDEO_SOURCES = ['/assets/ev-hero-video.mp4'];
 const VIDEO_STORAGE_KEY = 'kriscel-hero-video-index';
+const videoReservationCache = new Map();
 
-function getInitialVideo(videoSources) {
+function getHeroVideoSelection(videoSources) {
   if (typeof window === 'undefined' || !videoSources.length) {
-    return videoSources[0] || DEFAULT_VIDEO_SOURCES[0];
+    return {
+      activeVideo: videoSources[0] || DEFAULT_VIDEO_SOURCES[0],
+    };
+  }
+
+  const cacheKey = videoSources.join('|');
+  const cachedSelection = videoReservationCache.get(cacheKey);
+  if (cachedSelection) {
+    return cachedSelection;
   }
 
   const storedIndex = Number(window.localStorage.getItem(VIDEO_STORAGE_KEY) || 0);
   const currentIndex = Number.isFinite(storedIndex) ? storedIndex % videoSources.length : 0;
-  return videoSources[currentIndex] || videoSources[0] || DEFAULT_VIDEO_SOURCES[0];
+  const nextIndex = (currentIndex + 1) % videoSources.length;
+  const selection = {
+    activeVideo: videoSources[currentIndex] || videoSources[0] || DEFAULT_VIDEO_SOURCES[0],
+  };
+
+  window.localStorage.setItem(VIDEO_STORAGE_KEY, String(nextIndex));
+  videoReservationCache.set(cacheKey, selection);
+  return selection;
 }
 
 export default function VideoHero({ title, subtitle, actions, stats = [], videoSources = DEFAULT_VIDEO_SOURCES }) {
-  const [activeVideo, setActiveVideo] = useState(() => getInitialVideo(videoSources));
+  const { activeVideo } = useMemo(() => getHeroVideoSelection(videoSources), [videoSources]);
   const [videoFailed, setVideoFailed] = useState(false);
-
-  useEffect(() => {
-    if (!videoSources.length || typeof window === 'undefined') return;
-    if (window.__kriscelHeroVideoAdvancedThisLoad) return;
-
-    const storedIndex = Number(window.localStorage.getItem(VIDEO_STORAGE_KEY) || 0);
-    const currentIndex = Number.isFinite(storedIndex) ? storedIndex % videoSources.length : 0;
-    const nextIndex = (currentIndex + 1) % videoSources.length;
-
-    setActiveVideo(videoSources[currentIndex] || videoSources[0] || DEFAULT_VIDEO_SOURCES[0]);
-    setVideoFailed(false);
-    window.localStorage.setItem(VIDEO_STORAGE_KEY, String(nextIndex));
-    window.__kriscelHeroVideoAdvancedThisLoad = true;
-  }, [videoSources]);
 
   return (
     <section className="relative overflow-hidden">
